@@ -10,10 +10,10 @@
 
 `mvn clean package`
 
-### build docker images
+### build application through docker-compose
 `docker-compose build`
 
-### run 
+### run applications through docker-compose
 `docker-compose up spring-boot`
 
 `docker-compose up elasticsearch`
