@@ -3,7 +3,7 @@
 ## step 1 
 `git clone https://github.com/HelloMan/spring-boot-elk.git`
 
-## step 2 build & run 
+## step 2
 
 ### build applications
 `cd spring-boot-elk`
