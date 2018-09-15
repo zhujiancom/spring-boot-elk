@@ -1,6 +1,6 @@
 version: '3.1'
 services:
-  spring-boot-demo:
+  spring-boot:
     build: ./spring-boot-demo
     ports:
       - "8080:8080"
@@ -8,7 +8,7 @@ services:
       - log:/log
     networks:
       - elk
-  logstash-springboot:
+  logstash:
     build: elk/logstash
     volumes:
       - log:/log
