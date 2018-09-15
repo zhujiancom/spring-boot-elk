@@ -1,0 +1,41 @@
+version: '3.1'
+services:
+  spring-boot-demo:
+    build: ./spring-boot-demo
+    ports:
+      - "8080:8080"
+    volumes:
+      - log:/log
+    networks:
+      - elk
+  logstash-springboot:
+    build: elk/logstash
+    volumes:
+      - log:/log
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    networks:
+      - elk
+  kibana:
+    image: kibana:5.5.2
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk
+volumes:
+  log:
+    driver: local
+networks:
+  elk:
